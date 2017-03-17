@@ -1,0 +1,22 @@
+{
+    "version": "0.1",
+    "depends": [ "python" ],
+    "pre_install": "
+        \"& `\"$(scoop which pythonw)`\" -m idlelib.idle @args\" | Out-File \"$dir\\idle.ps1\"
+
+        $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut(\"$dir\\idle.lnk\")
+        $shortcut.TargetPath = convert-path (scoop which pythonw)
+        $shortcut.Arguments = \"-m idlelib.idle\"
+        $shortcut.IconLocation = join-path ([System.IO.Path]::GetDirectoryName((convert-path (scoop which pythonw)))) '\\lib\\idlelib\\icons\\idle.ico'
+        $shortcut.Save()
+    ",
+    "bin": [
+        [ "idle.ps1", "idle" ]
+    ],
+    "shortcuts": [
+        [
+            "idle.lnk",
+            "IDLE (Python)"
+        ]
+    ]
+}
