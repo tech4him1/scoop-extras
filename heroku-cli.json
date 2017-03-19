@@ -1,19 +1,30 @@
 {
-	"version": "nightly",
+	"homepage": "https://cli.heroku.com",
+	"license": "MIT",
+	"version": "5.7.3-35ab144",
 	"architecture": {
 		"32bit": {
-			"url": "https://cli-assets.heroku.com/branches/stable/heroku-windows-386.exe"
+			"url": "https://cli-assets.heroku.com/branches/stable/5.7.3-35ab144/heroku-v5.7.3-35ab144-windows-386.tar.xz",
+			"hash": "ea90c450a0ac90db94031dc295dc6ba48d8a7ecc162349833e7222c0021de25f"
 		},
 		"64bit": {
-			"url": "https://cli-assets.heroku.com/branches/stable/heroku-windows-amd64.exe"
+			"url": "https://cli-assets.heroku.com/branches/stable/5.7.3-35ab144/heroku-v5.7.3-35ab144-windows-amd64.tar.xz",
+			"hash": "05a1b1d7ad44394c83508f50a14c379712febc9d72e9f3f4f06490ed9c0f0b2f"
 		}
 	},
-	"installer": {
-		"args": [ "/S", "/D=$dir" ]
+	"bin": "bin/heroku.exe",
+	"autoupdate": {
+		"architecture": {
+			"32bit": {
+				"url": "https://cli-assets.heroku.com/branches/stable/$version/heroku-$version-windows-386.tar.xz"
+			},
+			"64bit": {
+				"url": "https://cli-assets.heroku.com/branches/stable/$version/heroku-$version-windows-amd64.tar.xz"
+			}
+		}
 	},
-	"uninstaller": {
-		"file": "Uninstall.exe",
-		"args": [ "/S" ]
-	},
-	"bin": "bin/heroku.exe"
+	"checkver": {
+		"url": "https://cli-assets.heroku.com/branches/stable/manifest.json",
+		"jp": "$.version"
+	}
 }
